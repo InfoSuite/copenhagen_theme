@@ -1,19 +1,24 @@
-<header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
-    {{/link}}
-  </div>
-  <div class="nav-wrapper">
-    <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button>
-    <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+<header class="header header-custom">
+  <div class="container">
+     <nav class="sub-nav">
+       <h4 class="logo">{{#link 'help_center'}}InfoSuite Tips &amp; Tricks{{/link}}</h4>
+       <div class="nav-wrapper">
+        {{#if alternative_locales}}
+            <div class="dropdown language-selector">
+              <button class="dropdown-toggle" aria-haspopup="true">
+                {{current_locale.name}}
+              </button>
+              <span class="dropdown-menu dropdown-menu-end" role="menu">
+                {{#each alternative_locales}}
+                  <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                    {{name}}
+                  </a>
+                {{/each}}
+              </span>
+            </div>
+          {{/if}}
+      </div>
+      {{search submit=false instant=settings.instant_search class='search search-full'}}
     </nav>
-    {{user_info}}
   </div>
 </header>

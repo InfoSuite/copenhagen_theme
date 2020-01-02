@@ -1,33 +1,314 @@
-<h1 class="visibility-hidden">{{ help_center.name }}</h1>
-
-<section class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
-  </div>
-</section>
-
 <div class="container">
   <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
     <section class="categories blocks">
       <ul class="blocks-list">
         {{#each categories}}
-          {{#if ../has_multiple_categories}}
+        {{#if ../has_multiple_categories}}
+         {{#isnt id 360000366837}}
             <li class="blocks-item">
+              {{#is id 360000456938}}
               <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
+                <img src='{{asset 'home.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
               </a>
+              {{else}}
+              {{#is id 360000463917}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'filter_and_sort.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463897}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'spreadsheed_chart.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463937}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'Pie.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000457058}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'book_bookmark.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463997}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'bell.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000457038}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'gearwheels.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463957}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'chart_area.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463877}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'new.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463857}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'code.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463837}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'earth.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000456998}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'gauge.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000456958}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'toolbox.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000463977}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'server_mail.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              {{#is id 360000457018}}
+              <a href='{{url}}' class="blocks-item-link">
+                <img src='{{asset 'mobilephone3.svg'}}' style='width: 40px; height: 40px;'/>
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+
+          {{/each}}
+              </a>
+              {{else}}
+              <a href='{{url}}' class="blocks-item-link">
+                <h4 class="blocks-item-title">{{name}}</h4>
+                <p class="blocks-item-description">{{excerpt description}}</p>
+                {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+          {{/each}}
+              </a>
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/is}}
+              {{/isnt}}
             </li>
+      		
           {{else}}
             {{#each sections}}
               <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
+                <a href='{{url}}' class="blocks-item-link test">
+                  <h4 class="blocks-item-title">
                     {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
+                  </h4>
+                  <p class="blocks-item-description">{{excerpt description}}</p>
+                  {{#each sections}}
+              {{#if articles}}      
+               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
+              {{else}}
+                <i class="section-empty">
+                  {{t 'empty'}}
+                </i>
+              {{/if}}
+          {{/each}}
                 </a>
               </li>
             {{/each}}
@@ -39,7 +320,7 @@
 
     {{#if promoted_articles}}
       <section class="articles">
-        <h2>{{t 'promoted_articles'}}</h2>
+        <h3>{{t 'promoted_articles'}}</h3>
         <ul class="article-list promoted-articles">
           {{#each promoted_articles}}
             <li class="promoted-articles-item">
@@ -68,9 +349,4 @@
     </section>
   {{/if}}
 
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
 </div>

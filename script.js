@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   function closest (element, selector) {
     if (Element.prototype.closest) {
@@ -136,24 +137,31 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.focus();
   }
 
-  var burgerMenu = document.querySelector('.header .menu-button');
+  var burgerMenu = document.querySelector('.header .icon-menu');
   var userMenu = document.querySelector('#user-nav');
-
-  burgerMenu.addEventListener('click', function(e) {
-    e.stopPropagation();
-    toggleNavigation(this, userMenu);
-  });
-
-
-  userMenu.addEventListener('keyup', function(e) {
-    if (e.keyCode === 27) { // Escape key
+	if(burgerMenu) {
+      burgerMenu.addEventListener('click', function(e) {
       e.stopPropagation();
-      closeNavigation(burgerMenu, this);
-    }
-  });
+      toggleNavigation(this, userMenu);
+    });
 
-  if (userMenu.children.length === 0) {
-    burgerMenu.style.display = 'none';
+    burgerMenu.addEventListener('keyup', function(e) {
+      if (e.keyCode === 13) { // Enter key
+        e.stopPropagation();
+        toggleNavigation(this, userMenu);
+      }
+    });
+
+    userMenu.addEventListener('keyup', function(e) {
+      if (e.keyCode === 27) { // Escape key
+        e.stopPropagation();
+        closeNavigation(burgerMenu, this);
+      }
+    });
+
+    if (userMenu.children.length === 0) {
+      burgerMenu.style.display = 'none';
+    } 
   }
 
   // Toggles expanded aria to collapsible elements
@@ -211,14 +219,86 @@ document.addEventListener('DOMContentLoaded', function() {
       })
     }
   });
-
-  // If there are any error notifications below an input field, focus that field
-  const notificationElm = document.querySelector(".notification-error");
-  if (
-    notificationElm &&
-    notificationElm.previousElementSibling &&
-    typeof notificationElm.previousElementSibling.focus === "function"
-  ) {
-    notificationElm.previousElementSibling.focus();
+  // Making articles to be visible next to the section sidebar
+  Array.prototype.forEach.call(document.querySelectorAll('.article-list a'), function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const id = this.dataset.resourceId;
+      const title = document.createElement("p");
+      title.innerHTML = this.innerHTML;
+      title.classList.add('article-title');
+      const existedTitle = document.querySelector('.article-title');
+      Array.prototype.forEach.call(document.querySelectorAll('.article-list a'), function(element) {
+        // deleting all previous article titles
+        if(element.parentNode.contains(existedTitle)) element.parentNode.removeChild(existedTitle);
+        if(element.dataset.resourceId !== id) {
+          element.setAttribute('aria-selected', 'false');
+          if(element.nextElementSibling) {
+          	element.nextElementSibling.style.display = 'none'; 
+          	element.classList.remove('active');
+          }
+        } else {
+          if(element.nextElementSibling.style.display === 'block') {
+            element.setAttribute('aria-selected', 'false');
+            element.nextElementSibling.style.display = 'none'; 
+          	element.classList.remove('active');
+            return;
+          }
+          element.setAttribute('aria-selected', 'true');
+          if(element.nextElementSibling) {
+              element.classList.add('active');
+              element.nextElementSibling.style.display = 'block';
+              element.parentNode.appendChild(title);
+            	setTimeout(() => scrollToTargetAdjusted(element), 250);
+            }
+          }
+      })
+    });
+  });
+  // Triggers to open first article when page is loaded
+  function renderFirstArticle(element, times) {
+    let allowed = times || 0;
+    function recursion() {
+      const articleOpened = element.nextElementSibling.children[0].className === 'article-body';
+        if(articleOpened || allowed >= 10 || element.getAttribute('aria-selected') === 'true') {
+        return;
+    	}
+      element.click();
+      allowed += 1;
+      setTimeout(recursion, 250);
+    }
+    setTimeout(recursion, 250);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.article-list a'), function(element, index) {
+    if(index === 0) {
+      setTimeout(renderFirstArticle.bind(null, element, 1), 250);
+    }
+  })
+  // language dropdown formatting
+  function formatLangName(name) {
+    return name.replace(/ *\([^)]*\) */g, "").trim();
+  }
+  const languageDropDown = document.querySelector('div.language-selector');
+  Array.prototype.forEach.call(languageDropDown.children, function(element, index) {
+    if(element.children.length) {
+      element.children[0].innerText = formatLangName(element.children[0].innerText);
+    } else {
+      element.innerText = formatLangName(element.innerText);
+    }
+  })
+  // scrolling to top of opened article
+  if ($(window).width() <= 375 ) {
+	function scrollToTargetAdjusted(element){
+	var headerOffset = 50;
+	var elementPosition = element.getBoundingClientRect().top;
+	const bodyRect = document.querySelector('body').getBoundingClientRect();
+	const offsetPosition = elementPosition - bodyRect.top - headerOffset;
+	window.scrollTo({
+	top: offsetPosition,
+	behavior: "smooth"
+	});
+	}
   }
 });
+
+
