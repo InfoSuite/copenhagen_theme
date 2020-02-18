@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   // Making articles to be visible next to the section sidebar
-  Array.prototype.forEach.call(document.querySelectorAll('.article-list a'), function(anchor) {
+  Array.prototype.forEach.call(document.querySelectorAll('.section-tree-with-article .article-list a'), function(anchor) {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       const id = this.dataset.resourceId;
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
       title.innerHTML = this.innerHTML;
       title.classList.add('article-title');
       const existedTitle = document.querySelector('.article-title');
-      Array.prototype.forEach.call(document.querySelectorAll('.article-list a'), function(element) {
+      Array.prototype.forEach.call(document.querySelectorAll('.section-tree-with-article .article-list a'), function(element) {
         // deleting all previous article titles
         if(element.parentNode.contains(existedTitle)) element.parentNode.removeChild(existedTitle);
         if(element.dataset.resourceId !== id) {
