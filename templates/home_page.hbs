@@ -4,7 +4,6 @@
       <ul class="blocks-list">
         {{#each categories}}
         {{#if ../has_multiple_categories}}
-         {{#isnt id 360000366837}}
             <li class="blocks-item">
               {{#is id 360000456938}}
               <a href='{{url}}' class="blocks-item-link">
@@ -260,20 +259,6 @@
 
           {{/each}}
               </a>
-              {{else}}
-              <a href='{{url}}' class="blocks-item-link">
-                <h4 class="blocks-item-title">{{name}}</h4>
-                <p class="blocks-item-description">{{excerpt description}}</p>
-                {{#each sections}}
-              {{#if articles}}      
-               <div class="block-article-count"><em>{{t 'show_all_articles' count=article_count}}</em></div>
-              {{else}}
-                <i class="section-empty">
-                  {{t 'empty'}}
-                </i>
-              {{/if}}
-          {{/each}}
-              </a>
               {{/is}}
               {{/is}}
               {{/is}}
@@ -289,7 +274,6 @@
               {{/is}}
               {{/is}}
               {{/is}}
-              {{/isnt}}
             </li>
       		
           {{else}}
