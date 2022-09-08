@@ -1150,6 +1150,7 @@ ul {
   color: $text_color;
 }
 
+
 p.article-title {
   position: absolute;
   left: 20%;
@@ -1159,7 +1160,14 @@ p.article-title {
   margin: 0;
   padding: 0;
   line-height: 1;
+  display: none;
 }
+
+
+.article-title-active p.article-title {
+  display: block;
+}
+
 
 .section-tree .see-all-articles {
   display: block;
@@ -4419,6 +4427,19 @@ footer {
 .header-custom {
   border-bottom: 1px solid #ddd;
   margin-bottom: 30px;
+  z-index: 11;
+  position: fixed;
+  height: 78px;
+  width: 100%;
+  background: #fff;
+  max-width: none;
+}
+
+.category-content,
+.knowledge-base,
+.search-results,
+.article-container{
+  padding-top: 100px;
 }
 
 
