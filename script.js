@@ -228,28 +228,38 @@ document.addEventListener('DOMContentLoaded', function() {
       title.innerHTML = this.innerHTML;
       title.classList.add('article-title');
       const existedTitle = document.querySelector('.article-title');
+  
       Array.prototype.forEach.call(document.querySelectorAll('.section-tree-with-article .article-list a'), function(element) {
         // deleting all previous article titles
-        if(element.parentNode.contains(existedTitle)) element.parentNode.removeChild(existedTitle);
         if(element.dataset.resourceId !== id) {
           element.setAttribute('aria-selected', 'false');
           if(element.nextElementSibling) {
           	element.nextElementSibling.style.display = 'none'; 
           	element.classList.remove('active');
+            element.parentNode.classList.remove('article-title-active');
+            e.preventDefault();  
           }
         } else {
           if(element.nextElementSibling.style.display === 'block') {
             element.setAttribute('aria-selected', 'false');
             element.nextElementSibling.style.display = 'none'; 
           	element.classList.remove('active');
-            return;
+            element.parentNode.classList.remove('article-title-active');
+            e.preventDefault();  
           }
           element.setAttribute('aria-selected', 'true');
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
+          
           if(element.nextElementSibling) {
               element.classList.add('active');
               element.nextElementSibling.style.display = 'block';
               element.parentNode.appendChild(title);
-            	setTimeout(() => scrollToTargetAdjusted(element), 250);
+            element.parentNode.classList.add('article-title-active');
+            e.preventDefault();  
+            	// setTimeout(() => scrollToTargetAdjusted(element), 250);
+            } else {
+              element.parentNode.classList.remove('article-title-active');
+              e.preventDefault();  
             }
           }
       })
@@ -287,18 +297,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   })
   // scrolling to top of opened article
-  if ($(window).width() <= 375 ) {
-	function scrollToTargetAdjusted(element){
-	var headerOffset = 50;
-	var elementPosition = element.getBoundingClientRect().top;
-	const bodyRect = document.querySelector('body').getBoundingClientRect();
-	const offsetPosition = elementPosition - bodyRect.top - headerOffset;
-	window.scrollTo({
-	top: offsetPosition,
-	behavior: "smooth"
-	});
-	}
-  }
+	// if ($(window).width() <= 375 ) {
+	// function scrollToTargetAdjusted(element){
+	// var headerOffset = 50;
+	// var elementPosition = element.getBoundingClientRect().top;
+	// const bodyRect = document.querySelector('body').getBoundingClientRect();
+	// const offsetPosition = elementPosition - bodyRect.top - headerOffset;
+	// window.scrollTo({
+	// top: offsetPosition,
+	// behavior: "smooth"
+	// });
+	// }
+	// }
 });
 
 
